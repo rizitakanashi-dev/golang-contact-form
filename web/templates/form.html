@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Formulir Kontak Standard Layout</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        background-color: #f7f9fa;
+        display: flex;
+        justify-content: center;
+        padding: 50px;
+      }
+      .box {
+        background: white;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        width: 350px;
+      }
+      .group {
+        margin-bottom: 15px;
+      }
+      .group label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+      }
+      .group input,
+      .group textarea {
+        width: 100%;
+        padding: 8px;
+        box-sizing: border-box;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+      button {
+        width: 100%;
+        padding: 10px;
+        background: #007bc5;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+      .alert {
+        background: #e6f4ea;
+        color: #137333;
+        padding: 10px;
+        margin-bottom: 15px;
+        border-radius: 4px;
+        font-size: 14px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      <h2>Kontak Kami</h2>
+      {{if .Success}}
+      <div class="alert">
+        Terima kasih <strong>{{.Nama}}</strong>, pesan terkirim!
+      </div>
+      {{end}}
+      <form action="/kontak" method="POST">
+        <div class="group">
+          <label>Nama</label><input type="text" name="nama" required />
+        </div>
+        <div class="group">
+          <label>Email</label><input type="email" name="email" required />
+        </div>
+        <div class="group">
+          <label>Pesan</label
+          ><textarea name="pesan" rows="4" required></textarea>
+        </div>
+        <button type="submit">Kirim</button>
+      </form>
+    </div>
+  </body>
+</html>
