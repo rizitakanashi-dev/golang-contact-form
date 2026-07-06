@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Halaman Admin - Kotak Masuk</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        background-color: #f4f7f6;
+        margin: 40px;
+        color: #333;
+      }
+      h1 {
+        color: #007bff;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+        background: #fff;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+      th,
+      td {
+        padding: 12px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+      }
+      th {
+        background-color: #007bff;
+        color: white;
+      }
+      tr:hover {
+        background-color: #f1f1f1;
+      }
+      .empty {
+        text-align: center;
+        padding: 20px;
+        color: #777;
+        font-style: italic;
+      }
+      .back-btn {
+        display: inline-block;
+        margin-bottom: 15px;
+        text-decoration: none;
+        color: #007bff;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Daftar Pesan Masuk</h1>
+    <a href="/kontak" class="back-btn">&larr; Kembali ke Form Kontak</a>
+
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nama</th>
+          <th>Email</th>
+          <th>Pesan</th>
+          <th>Waktu Kirim</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{if .SemuaPesan}} {{range .SemuaPesan}}
+        <tr>
+          <td>{{.ID}}</td>
+          <td>{{.Nama}}</td>
+          <td>{{.Email}}</td>
+          <td>{{.Pesan}}</td>
+          <td>{{.WaktuKirim.Format "02 Jan 2006 15:04"}}</td>
+        </tr>
+        {{end}} {{else}}
+        <tr>
+          <td colspan="5" class="empty">Belum ada pesan yang masuk.</td>
+        </tr>
+        {{end}}
+      </tbody>
+    </table>
+  </body>
+</html>

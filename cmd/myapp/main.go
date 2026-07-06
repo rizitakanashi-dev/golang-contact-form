@@ -16,6 +16,7 @@ func main() {
 	defer config.DB.Close()
 
 	http.HandleFunc("/kontak", handlers.KontakHandler)
+	http.HandleFunc("/admin/pesan", handlers.PesanAdminHandler)
 
 	fmt.Println("Aplikasi berjalan di: http://localhost:8080/kontak")
 
